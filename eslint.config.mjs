@@ -1,16 +1,52 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+'use client';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+import { defineConfig } from 'eslint/config';
+import globals from 'globals';
+import js from '@eslint/js';
+import tseslint from 'typescript-eslint';
+import pluginReact from 'eslint-plugin-react';
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
+export default defineConfig([
+  { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'] },
+  { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'], languageOptions: { globals: globals.browser } },
+  { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'], plugins: { js }, extends: ['js/recommended'] },
+  tseslint.configs.recommended,
+  pluginReact.configs.flat.recommended,
+  {
+    rules: {
+      'react/react-in-jsx-scope': 'off',
+      'no-unused-vars': 'warn',
+      'no-console': 'warn',
+      'semi': ['warn', 'always'],
+      'quotes': ['warn', 'single'],
+      'object-curly-spacing': ['warn', 'always'],
+      'no-multiple-empty-lines': ['warn', { max: 1 }],
+      'padded-blocks': ['warn', 'never'],
+      'no-trailing-spaces': 'warn',
+      'no-tabs': 'warn',
+      'comma-dangle': ['warn', 'never'],
+      '@typescript-eslint/no-unused-vars': 'warn',
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
+      'react/self-closing-comp': ['warn', {
+        component: true,
+        html: false
+      }],
+      'react/jsx-props-no-multi-spaces': 'warn'
+    }
+  },
 
-const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
-];
-
-export default eslintConfig;
+  // TypeScript-specific rules
+  {
+    files: ['**/*.{ts,tsx}'],
+    rules: {
+      '@typescript-eslint/no-unused-vars': 'warn',
+      '@typescript-eslint/explicit-module-boundary-types': 'warn',
+      'indent': ['warn', 'tab', { SwitchCase: 1 }],
+      'no-tabs': 'off',
+      'no-trailing-spaces': 'warn',
+      'padded-blocks': ['warn', 'never'],
+      'no-multiple-empty-lines': ['warn', { max: 1 }]
+    }
+  }
+]);
