@@ -73,7 +73,7 @@ const UploadWidget = ({ img } : UploadWidgetProps): JSX.Element => {
 	};
 
 	return (
-		<button onClick={handleUploadClick} disabled={!cloudinaryReady}>
+		<button onClick={handleUploadClick} disabled={!cloudinaryReady} className='cursor-pointer'>
 			{img}
 		</button>
 	);

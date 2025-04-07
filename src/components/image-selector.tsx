@@ -422,6 +422,28 @@ export default function ImageSelector(): JSX.Element {
 		setImage(selectedOption, false);
 	}, []);
 
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				// Sending GET request to your API route
+				const response = await fetch('/api/handleImages');
+
+				// If the response is successful, parse the JSON and set the message state
+				if (response.ok) {
+					const data = await response.json();
+					console.log('🚀 ~ fetchData ~ data:', data);
+					// setMessage(data.message);
+				} else {
+					console.error('Failed to fetch data');
+				}
+			} catch (error) {
+				console.error('Error fetching data:', error);
+			}
+		};
+
+		fetchData();
+	}, []);
+
 	return (
 		<div className="dark flex justify-center overflow-hidden items-center p-6 bg-background text-foreground transition-colors duration-200 min-h-screen">
 			<div className="w-full space-y-8 flex flex-col items-center justify-center  mx-[10%]">
