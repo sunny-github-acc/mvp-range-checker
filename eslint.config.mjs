@@ -27,7 +27,7 @@ export default defineConfig([
       'comma-dangle': ['warn', 'never'],
       '@typescript-eslint/no-unused-vars': 'warn',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
-      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-explicit-any': 'warn',
       'react/self-closing-comp': ['warn', {
         component: true,
         html: false

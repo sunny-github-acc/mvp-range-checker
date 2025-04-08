@@ -64,6 +64,7 @@ interface ImageOption {
   description: string;
   sub: {
     id: string;
+    parentId: string;
     label: string;
     src: string;
     alt: string;
@@ -80,6 +81,7 @@ const imageOptions = [
 		description: 'UTG',
 		sub: {
 			id: 'utg3b',
+			parentId: 'utg',
 			label: 'UTG (3B)',
 			src: imageNames.UTG3B,
 			alt: 'UTG (3B)',
@@ -94,6 +96,7 @@ const imageOptions = [
 		description: 'MP',
 		sub: {
 			id: 'mp3b',
+			parentId: 'mp',
 			label: 'MP (3B)',
 			src: imageNames.MP3B,
 			alt: 'MP (3B)',
@@ -108,6 +111,7 @@ const imageOptions = [
 		description: 'CO',
 		sub: {
 			id: 'co3b',
+			parentId: 'co',
 			label: 'CO (3B)',
 			src: imageNames.CO3B,
 			alt: 'CO (3B)',
@@ -122,6 +126,7 @@ const imageOptions = [
 		description: 'BU',
 		sub: {
 			id: 'bu3b',
+			parentId: 'bu',
 			label: 'BU (3B)',
 			src: imageNames.BU3B,
 			alt: 'BU (3B)',
@@ -136,6 +141,7 @@ const imageOptions = [
 		description: 'SB',
 		sub: {
 			id: 'sb3b',
+			parentId: 'sb',
 			label: 'SB (3B)',
 			src: imageNames.SB3B,
 			alt: 'SB (3B)',
@@ -153,6 +159,7 @@ const vsImageOptions = [
 		description: 'MP vs UTG',
 		sub: {
 			id: 'vsMPvsUTG4B',
+			parentId: 'vsMPvsUTG',
 			label: 'MP vs UTG (4B)',
 			src: imageNames.vsMPvsUTG4B,
 			alt: 'MP vs UTG (4B)',
@@ -167,6 +174,7 @@ const vsImageOptions = [
 		description: 'CO vs UTG',
 		sub: {
 			id: 'vsCOvsUTG4B',
+			parentId: 'vsCOvsUTG',
 			label: 'CO vs UTG (4B)',
 			src: imageNames.vsCOvsUTG4B,
 			alt: 'CO vs UTG (4B)',
@@ -181,6 +189,7 @@ const vsImageOptions = [
 		description: 'CO vs MP',
 		sub: {
 			id: 'vsCOvsMP4B',
+			parentId: 'vsCOvsMP',
 			label: 'CO vs MP (4B)',
 			src: imageNames.vsCOvsMP4B,
 			alt: 'CO vs MP (4B)',
@@ -195,6 +204,7 @@ const vsImageOptions = [
 		description: 'BU vs UTG',
 		sub: {
 			id: 'vsBUvsUTG4B',
+			parentId: 'vsBUvsUTG',
 			label: 'BU vs UTG (4B)',
 			src: imageNames.vsBUvsUTG4B,
 			alt: 'BU vs UTG (4B)',
@@ -209,6 +219,7 @@ const vsImageOptions = [
 		description: 'BU vs MP',
 		sub: {
 			id: 'vsBUvsMP4B',
+			parentId: 'vsBUvsMP',
 			label: 'BU vs MP (4B)',
 			src: imageNames.vsBUvsMP4B,
 			alt: 'BU vs MP (4B)',
@@ -223,6 +234,7 @@ const vsImageOptions = [
 		description: 'BU vs CO',
 		sub: {
 			id: 'vsBUvsCO4B',
+			parentId: 'vsBUvsCO',
 			label: 'BU vs CO (4B)',
 			src: imageNames.vsBUvsCO4B,
 			alt: 'BU vs CO (4B)',
@@ -237,6 +249,7 @@ const vsImageOptions = [
 		description: 'SB vs UTG',
 		sub: {
 			id: 'vsSBvsUTG4B',
+			parentId: 'vsSBvsUTG',
 			label: 'SB vs UTG (4B)',
 			src: imageNames.vsSBvsUTG4B,
 			alt: 'SB vs UTG (4B)',
@@ -251,6 +264,7 @@ const vsImageOptions = [
 		description: 'SB vs MP',
 		sub: {
 			id: 'vsSBvsMP4B',
+			parentId: 'vsSBvsMP',
 			label: 'SB vs MP (4B)',
 			src: imageNames.vsSBvsMP4B,
 			alt: 'SB vs MP (4B)',
@@ -265,6 +279,7 @@ const vsImageOptions = [
 		description: 'SB vs CO',
 		sub: {
 			id: 'vsSBvsCO4B',
+			parentId: 'vsSBvsCO',
 			label: 'SB vs CO (4B)',
 			src: imageNames.vsSBvsCO4B,
 			alt: 'SB vs CO (4B)',
@@ -279,6 +294,7 @@ const vsImageOptions = [
 		description: 'SB vs BU',
 		sub: {
 			id: 'vsSBvsBU4B',
+			parentId: 'vsSBvsBU',
 			label: 'SB vs BU (4B)',
 			src: imageNames.vsSBvsBU4B,
 			alt: 'SB vs BU (4B)',
@@ -293,6 +309,7 @@ const vsImageOptions = [
 		description: 'BB vs UTG',
 		sub: {
 			id: 'vsBBvsUTG4B',
+			parentId: 'vsBBvsUTG',
 			label: 'BB vs UTG (4B)',
 			src: imageNames.vsBBvsUTG4B,
 			alt: 'BB vs UTG (4B)',
@@ -307,6 +324,7 @@ const vsImageOptions = [
 		description: 'BB vs MP',
 		sub: {
 			id: 'vsBBvsMP4B',
+			parentId: 'vsBBvsMP',
 			label: 'BB vs MP (4B)',
 			src: imageNames.vsBBvsMP4B,
 			alt: 'BB vs MP (4B)',
@@ -321,6 +339,7 @@ const vsImageOptions = [
 		description: 'BB vs CO',
 		sub: {
 			id: 'vsBBvsCO4B',
+			parentId: 'vsBBvsCO',
 			label: 'BB vs CO (4B)',
 			src: imageNames.vsBBvsCO4B,
 			alt: 'BB vs CO (4B)',
@@ -335,6 +354,7 @@ const vsImageOptions = [
 		description: 'BB vs BU',
 		sub: {
 			id: 'vsBBvsBU4B',
+			parentId: 'vsBBvsBU',
 			label: 'BB vs BU (4B)',
 			src: imageNames.vsBBvsBU4B,
 			alt: 'BB vs BU (4B)',
@@ -349,6 +369,7 @@ const vsImageOptions = [
 		description: 'BB vs SB',
 		sub: {
 			id: 'vsBBvsSB4B',
+			parentId: 'vsBBvsSB',
 			label: 'BB vs SB (4B)',
 			src: imageNames.vsBBvsSB4B,
 			alt: 'BB vs SB (4B)',
@@ -366,10 +387,14 @@ export default function ImageSelector(): JSX.Element {
 	const [fetchedImages, setFetchedImages] = useState<{ [key: string]: any }>({});
 	const [isLoading, setIsLoading] = useState(false);
 
-	const cld = new Cloudinary({ cloud: { cloudName: 'dgxaoqjyu' } });
+	const cld = new Cloudinary({ cloud: { cloudName: process.env.CLOUDINARY_NAME } });
 
+	const isImageOptions = images === imageOptions;
 	const option = isSub ? selectedOption.sub : selectedOption;
-	const buttonStyles = 'w-full sm:w-auto hover:bg-black hover:border-gray-400 min-w-[130px]';
+
+	const buttonStyles = 'w-full sm:w-auto min-w-[130px] text-gray-100 border border-gray-500 hover:border-gray-300 cursor-pointer transition-colors duration-150';
+	const buttonStylesActive = 'bg-black-300 shadow-sm hover:bg-black border border-gray-500';
+	const buttonStylesPassive = 'bg-muted hover:bg-black border border-gray-800';
 
 	const handleOpenButton = (isOpen: boolean) => {
 		const options = isOpen ? vsImageOptions : imageOptions;
@@ -422,28 +447,6 @@ export default function ImageSelector(): JSX.Element {
 		setImage(selectedOption, false);
 	}, []);
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				// Sending GET request to your API route
-				const response = await fetch('/api/handleImages');
-
-				// If the response is successful, parse the JSON and set the message state
-				if (response.ok) {
-					const data = await response.json();
-					console.log('🚀 ~ fetchData ~ data:', data);
-					// setMessage(data.message);
-				} else {
-					console.error('Failed to fetch data');
-				}
-			} catch (error) {
-				console.error('Error fetching data:', error);
-			}
-		};
-
-		fetchData();
-	}, []);
-
 	return (
 		<div className="dark flex justify-center overflow-hidden items-center p-6 bg-background text-foreground transition-colors duration-200 min-h-screen">
 			<div className="w-full space-y-8 flex flex-col items-center justify-center  mx-[10%]">
@@ -463,19 +466,19 @@ export default function ImageSelector(): JSX.Element {
 				/> : null
 				}
 
-				<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4  w-full">
+				<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 w-full">
 					<div className="flex flex-col justify-center gap-3 w-full">
 						<div className="flex gap-1">
 							<Button
-								variant="outline"
-								className={`${buttonStyles} ${images === vsImageOptions ? 'bg-muted' : 'border-gray-500'}`}
+								variant={isImageOptions ? 'default' : 'default'}
+								className={`${buttonStyles} ${isImageOptions ? buttonStylesActive : buttonStylesPassive}`}
 								onClick={() => handleOpenButton(true)}
 							>
                 Open
 							</Button>
 							<Button
-								variant="outline"
-								className={`${buttonStyles} ${images === imageOptions ? 'bg-muted' : ' border-gray-500'}`}
+								variant={!isImageOptions ? 'default' : 'default'}
+								className={`${buttonStyles} ${!isImageOptions ? buttonStylesActive : buttonStylesPassive}`}
 								onClick={() => handleOpenButton(false)}
 							>
                 vs Open
@@ -487,12 +490,12 @@ export default function ImageSelector(): JSX.Element {
 						<div className="flex flex-wrap gap-1">
 							{images.map((opt) => (
 								<Button
-									variant="outline"
+									variant={option.id === opt.id ? 'default' : 'default'}
 									key={opt.id}
 									onClick={() => handleSubButton(opt)}
 									className={cn(
 										buttonStyles,
-										option.id === opt.id ? 'border-gray-500' : 'bg-muted'
+										(option.id === opt.id || ('parentId' in option && option.parentId === opt.id)) ? buttonStylesActive : buttonStylesPassive
 									)}
 								>
 									{opt.label}
@@ -504,14 +507,14 @@ export default function ImageSelector(): JSX.Element {
 
 						<div className="flex flex-wrap gap-1">
 							<Button
-								variant="outline"
+								variant={isSub ? 'default' : 'default'}
 								onClick={() => handleSubButton(null)}
 								className={cn(
 									buttonStyles,
-									isSub ? 'border-gray-500' : 'bg-muted'
+									isSub ? buttonStylesActive : buttonStylesPassive
 								)}
 							>
-								{images === imageOptions ? '(3B)' : '(4B)'}
+								{isImageOptions ? '(3B)' : '(4B)'}
 							</Button>
 						</div>
 					</div>
