@@ -1,8 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import multer from 'multer';
 import cloudinary from 'cloudinary';
-import fs from 'fs';
-import path from 'path';
+import streamifier from 'streamifier';
 
 type ResponseData = {
   data?: any;
@@ -16,22 +15,8 @@ cloudinary.v2.config({
 	api_secret: process.env.CLOUDINARY_SECRET
 });
 
-const uploadDir = path.join(process.cwd(), 'uploads');
-
-if (!fs.existsSync(uploadDir)) {
-	fs.mkdirSync(uploadDir, { recursive: true });
-}
-
-const storage = multer.diskStorage({
-	destination: (req, file, cb) => {
-		cb(null, uploadDir);
-	},
-	filename: (req, file, cb) => {
-		cb(null, file.originalname);
-	}
-});
-
-const upload = multer({ storage: storage }).array('file', 100);
+const storage = multer.memoryStorage();
+const upload = multer({ storage }).array('file', 100);
 
 export const config = {
 	api: {
@@ -59,19 +44,18 @@ export default function handler(
 				const uploadResults = await Promise.all(
 					files.map((file: Express.Multer.File) =>
 						new Promise<{ url: string }>((resolve, reject) => {
-							cloudinary.v2.uploader.upload(
-								file.path,
+							const stream = cloudinary.v2.uploader.upload_stream(
 								{
 									upload_preset: 'original',
 									overwrite: true
 								},
 								(error: any, result: any) => {
-									fs.unlink(file.path, () => {});
-
 									if (error) return reject(error);
-									resolve({ url: result.secure_url });
+									resolve({ url: result?.secure_url || '' });
 								}
 							);
+
+							streamifier.createReadStream(file.buffer).pipe(stream);
 						})
 					)
 				);
