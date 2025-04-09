@@ -46,6 +46,7 @@ export default function handler(
 						new Promise<{ url: string }>((resolve, reject) => {
 							const stream = cloudinary.v2.uploader.upload_stream(
 								{
+									public_id: file.originalname.replace(/\.[^/.]+$/, ''),
 									upload_preset: 'original',
 									overwrite: true
 								},
